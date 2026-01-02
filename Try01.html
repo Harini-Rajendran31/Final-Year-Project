@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Apps Script Fetch Test</title>
+</head>
+<body>
+
+  <h2>Send Data to Google Apps Script</h2>
+  <button onclick="sendData()">Send Data</button>
+
+  <script>
+    function sendData() {
+      fetch("https://script.google.com/macros/s/AKfycbzsg085FbEBgUeeWhMYBfR2nlc8NrqHETI4azox8SYtImTNNIi36HCvauhM-1eBHupg/exec", {
+        method: "POST",
+        body: JSON.stringify({
+          name: "Harini",
+          age: 25
+        })
+      })
+      .then(res => res.text()) // text() avoids JSON parsing issues
+      .then(data => console.log("Response from Apps Script:", data))
+      .catch(err => console.error("Fetch Error:", err));
+    }
+  </script>
+
+</body>
+</html>
